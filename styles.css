@@ -173,7 +173,7 @@ p {
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--tg-theme-bg-color);
+
     color: var(--tg-theme-text-color);
 
 
@@ -185,14 +185,11 @@ p {
     border-bottom: 1px solid #d4d4d4;
 }
 
-/*when hovering an item:*/
-.autocomplete-items div:hover {
-    background-color: var(--tg-theme-secondary-bg-color);
-}
+
 
 /*when navigating through the items using the arrow keys:*/
 .autocomplete-active {
-    background-color: var(--tg-theme-secondary-bg-color);
+
     color: var(--tg-theme-text-color);
 }
 
