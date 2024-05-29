@@ -1,0 +1,250 @@
+body {
+    background-color: #0a1621;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #091b27;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 320px;
+}
+
+.profile-pic {
+    background-color: #6b6b6b;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 17px;
+    color: #b7b7b7;
+    margin-bottom: 20px;
+}
+
+.pair-entry {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.pair-entry label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: regular;
+}
+
+.pair-entry input[type="text"],
+.pair-entry input[type="number"] {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: calc(100% - 30px);
+    margin-left: 15px;
+    margin-bottom: 5px;
+    background-color: #0a1621;
+    color: #b7b7b7;
+    font-size: 16px;
+}
+
+.pair-entry input[type="number"] {
+    width: calc(100% - 90px);
+}
+
+.pair-entry .remove-pair-btn {
+    background-color: #912f49;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 35%;
+    margin-left: 15px;
+    margin-bottom: 5px;
+    color: #b7b7b7;
+    font-size: 16px;
+}
+
+.pair-entry .input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.pair-entry .divider {
+    height: 1px;
+    background-color: rgba(183, 183, 183, 0.3);
+    margin: 10px 0;
+}
+
+.remove-pair-btn {
+    padding: 10px;
+    background-color: #912f49;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.add-pair-btn,
+.save-changes-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-bottom: 15px;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.add-pair-btn {
+    background-color: #247648;
+    color: #ffffff;
+    width: 15%;
+}
+
+.save-changes-btn {
+    background-color: #3c6895;
+    color: #ffffff;
+    width: 35%;
+}
+
+.btn-container {
+    text-align: center;
+}
+
+.alarms-label {
+    font-size: 18px;
+    font-weight: regular;
+    margin-bottom: 10px;
+}
+
+
+/*the container must be positioned relative:*/
+.autocomplete {
+    position: relative;
+    display: inline-block;
+    background-color: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
+}
+
+/*   
+  input {
+    border: 1px solid transparent;
+    background-color: var(--tg-theme-bg-color);
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  input[type=text] {
+    background-color: var(--tg-theme-bg-color);
+    width: 100%;
+  }
+   */
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #4a4a4ac6;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
+
+
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+    background-color: var(--tg-theme-secondary-bg-color);
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+    background-color: var(--tg-theme-secondary-bg-color);
+    color: var(--tg-theme-text-color);
+}
+
+
+.autocomplete {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    background-color: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
+}
+
+.autocomplete input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #4a4a4ac6;
+    border-radius: 4px;
+    background-color: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #4a4a4ac6;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.autocomplete-items div {
+    border-radius: 15px;
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete-items div:last-child {
+    border-bottom: none;
+}
+
+.autocomplete-items div:hover {
+    background-color: var(--tg-theme-secondary-bg-color);
+    color: var(--tg-theme-text-color);
+}
+
+.autocomplete-active {
+    background-color: var(--tg-theme-secondary-bg-color);
+    color: var(--tg-theme-text-color);
+}
