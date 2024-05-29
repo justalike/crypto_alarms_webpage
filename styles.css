@@ -201,7 +201,7 @@ p {
     position: relative;
     display: inline-block;
     width: 100%;
-    background-color: var(--tg-theme-bg-color);
+
     color: var(--tg-theme-text-color);
 }
 
@@ -211,7 +211,7 @@ p {
     font-size: 16px;
     border: 1px solid #4a4a4ac6;
     border-radius: 4px;
-    background-color: var(--tg-theme-bg-color);
+
     color: var(--tg-theme-text-color);
 }
 
@@ -222,7 +222,7 @@ p {
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--tg-theme-bg-color);
+
     color: var(--tg-theme-text-color);
     border-radius: 0 0 4px 4px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -240,11 +240,11 @@ p {
 }
 
 .autocomplete-items div:hover {
-    background-color: var(--tg-theme-secondary-bg-color);
+
     color: var(--tg-theme-text-color);
 }
 
 .autocomplete-active {
-    background-color: var(--tg-theme-secondary-bg-color);
+
     color: var(--tg-theme-text-color);
 }
