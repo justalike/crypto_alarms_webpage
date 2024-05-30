@@ -1,6 +1,9 @@
 import { allPairs } from './pairs.js';
 import { autocomplete } from './autocomplete.js';
 
+let telegram = window.Telegram.WebApp;
+telegram.expand()
+
 document.addEventListener('DOMContentLoaded', async () => {
     const pairs = await allPairs();
     var n = 1;
@@ -28,13 +31,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="autocomplete">
                 <div class="input-container">
                  <label class="price-label">${n + 1}</label>
-                    <input type="text" name="pair" placeholder="Введите пару" required>
+                    <input type="text" id="pair${n + 1}" name="pair" placeholder="Введите пару" required>
                     <button class="remove-pair-btn" onclick="removePair(this)">-</button>
                 </div>
             </div>
             <div class="input-container">
                 <label class="price-label">$</label>
-                <input type="number" value="" placeholder="Укажите цену">
+                <input type="number" id="price${n + 1}" name="price" value="" placeholder="Укажите цену">
             </div>
           
         `;
@@ -59,4 +62,48 @@ document.addEventListener('DOMContentLoaded', async () => {
         n -= 1
         pairContainer.removeChild(button.closest('.pair-entry'));
     };
+
+
+
+    window.submitButtonAction = () => {
+
+        let pairInputs = document.querySelectorAll('input[name="pair"]');
+        let priceInputs = document.querySelectorAll('input[name="price"]');
+
+
+        let assets = [];
+        let prices = [];
+
+        for (let i = 0;
+            i < pairInputs.length &&
+            pairInputs[i].value !== 0 &&
+            priceInputs[i].value > 0;
+            i++) {
+
+            if (!pairInputs[i].value || !pairs.includes(pairInputs[i].value.toUpperCase())) {
+                console.log('Вы не выбрали пару или она указана некорректно');
+                return;
+            }
+            assets.push(pairInputs[i].value?.toUpperCase());
+            prices.push(+priceInputs[i].value);
+
+
+        }
+
+
+        if (assets.length > 0 && prices.length > 0) {
+
+            let data = {
+                pairs: assets,
+                prices: prices,
+            }
+            telegram.sendData(JSON.stringify(data))
+
+            telegram.close()
+        } else {
+            alert("Заполните все поля")
+        }
+
+
+    }
 });

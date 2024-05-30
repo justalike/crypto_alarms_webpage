@@ -35,15 +35,14 @@
 
                 <div class="input-container">
                     <label class="price-label">$</label>
-                    <input type="number" value="" placeholder="Укажите цену">
+                    <input type="number" id="price" name="price" value="" placeholder="Укажите цену">
                 </div>
 
             </div>
         </div>
         <div class="btn-container">
             <button class="add-pair-btn" onclick="addPair()">+</button>
-            <button class="save-changes-btn">Сохранить
-            </button>
+            <button class="save-changes-btn" onclick="submitButtonAction()">Сохранить</button>
         </div>
     </div>
     <script src="script.js" type="module"></script>
