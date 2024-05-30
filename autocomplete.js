@@ -1,5 +1,7 @@
 import { allPairs } from './pairs.js';
-
+function closeKeyboard() {
+    document.activeElement.blur();
+}
 export function autocomplete(inp, arr) {
     var currentFocus;
     inp.addEventListener("input", function (e) {
@@ -21,6 +23,7 @@ export function autocomplete(inp, arr) {
                 b.addEventListener("click", function (e) {
                     inp.value = this.getElementsByTagName("input")[0].value;
                     closeAllLists();
+                    closeKeyboard(); // Close the keyboard when a suggestion is clicked
                 });
                 a.appendChild(b);
                 if (suggestionCount === 0) {
