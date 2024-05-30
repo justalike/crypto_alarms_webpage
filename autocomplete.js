@@ -23,7 +23,6 @@ export function autocomplete(inp, arr) {
                 b.addEventListener("click", function (e) {
                     inp.value = this.getElementsByTagName("input")[0].value;
                     closeAllLists();
-                    closeKeyboard(); // Close the keyboard when a suggestion is clicked
                 });
                 a.appendChild(b);
                 if (suggestionCount === 0) {
