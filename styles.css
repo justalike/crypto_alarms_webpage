@@ -2,11 +2,13 @@ body {
     background-color: #0a1621;
     color: #ffffff;
     font-family: 'Roboto', sans-serif;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    overflow: hidden;
+    /* Prevents body scroll, we will handle it within the container */
 }
 
 .container {
@@ -16,6 +18,11 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     text-align: center;
     width: 320px;
+    height: 90vh;
+    /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .profile-pic {
@@ -27,15 +34,23 @@ body {
 }
 
 h1 {
-    font-size: 28px;
+    font-size: 25px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin: 0;
 }
 
 p {
     font-size: 17px;
     color: #b7b7b7;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+}
+
+#pair-container {
+    flex: 1;
+    overflow-y: auto;
+    /* Allows vertical scrolling */
+    padding-right: 10px;
+    /* Prevents content from hiding behind scrollbar */
 }
 
 .pair-entry {
@@ -47,7 +62,6 @@ p {
     display: block;
     margin-bottom: 5px;
     font-size: 18px;
-    font-weight: regular;
 }
 
 .pair-entry input[type="text"],
@@ -70,7 +84,7 @@ p {
 
 .pair-entry .remove-pair-btn {
     background-color: #912f49;
-    padding: 15px;
+    padding: 10px;
     border: none;
     border-radius: 10px;
     box-sizing: border-box;
@@ -102,7 +116,7 @@ p {
     cursor: pointer;
     padding: 10px;
     margin-left: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     font-size: 16px;
 }
 
@@ -131,75 +145,22 @@ p {
 }
 
 .btn-container {
+
     text-align: center;
+    margin-top: 20px;
+    /* Adjusted spacing */
 }
 
 .alarms-label {
     font-size: 18px;
-    font-weight: regular;
     margin-bottom: 10px;
 }
 
-
-/*the container must be positioned relative:*/
-.autocomplete {
-    position: relative;
-    display: inline-block;
-    background-color: var(--tg-theme-bg-color);
-    color: var(--tg-theme-text-color);
-}
-
-/*   
-  input {
-    border: 1px solid transparent;
-    background-color: var(--tg-theme-bg-color);
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  input[type=text] {
-    background-color: var(--tg-theme-bg-color);
-    width: 100%;
-  }
-   */
-
-.autocomplete-items {
-    position: absolute;
-    border: 1px solid #4a4a4ac6;
-    border-bottom: none;
-    border-top: none;
-    z-index: 99;
-    /*position the autocomplete items to be the same width as the container:*/
-    top: 100%;
-    left: 0;
-    right: 0;
-
-    color: var(--tg-theme-text-color);
-
-
-}
-
-.autocomplete-items div {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #d4d4d4;
-}
-
-
-
-/*when navigating through the items using the arrow keys:*/
-.autocomplete-active {
-
-    color: var(--tg-theme-text-color);
-}
-
-
+/* Autocomplete styles */
 .autocomplete {
     position: relative;
     display: inline-block;
     width: 100%;
-
-    color: var(--tg-theme-text-color);
 }
 
 .autocomplete input[type="text"] {
@@ -208,8 +169,8 @@ p {
     font-size: 16px;
     border: 1px solid #4a4a4ac6;
     border-radius: 4px;
-
-    color: var(--tg-theme-text-color);
+    background-color: #0a1621;
+    color: #b7b7b7;
 }
 
 .autocomplete-items {
@@ -219,14 +180,13 @@ p {
     top: 100%;
     left: 0;
     right: 0;
-
-    color: var(--tg-theme-text-color);
+    background-color: #0a1621;
+    color: #b7b7b7;
     border-radius: 0 0 4px 4px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .autocomplete-items div {
-    border-radius: 15px;
     padding: 10px;
     cursor: pointer;
     border-bottom: 1px solid #d4d4d4;
@@ -237,11 +197,11 @@ p {
 }
 
 .autocomplete-items div:hover {
-
-    color: var(--tg-theme-text-color);
+    background-color: #1a2b3c;
+    color: #ffffff;
 }
 
 .autocomplete-active {
-
-    color: var(--tg-theme-text-color);
+    background-color: #1a2b3c;
+    color: #ffffff;
 }

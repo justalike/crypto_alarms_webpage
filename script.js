@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="autocomplete">
                 <div class="input-container">
                     <input type="text" name="pair" placeholder="BTCUSDT" required>
-                    <button class="remove-pair-btn" onclick="removePair(this)">🗑️</button>
+                    <button class="remove-pair-btn" onclick="removePair(this)">Удалить</button>
                 </div>
             </div>
             <div class="input-container">
@@ -31,9 +31,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         `;
         pairContainer.appendChild(pairEntry);
 
+
         // Reinitialize autocomplete for new input
         const newInput = pairEntry.querySelector('input[name="pair"]');
         autocomplete(newInput, pairs);
+
+        // Scroll to the new pair entry
+        pairEntry.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Focus on the new input field
+        newInput.focus();
     };
 
     // Add removePair function to window
