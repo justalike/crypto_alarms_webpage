@@ -12,7 +12,7 @@ export function autocomplete(inp, arr) {
         a.setAttribute("class", "autocomplete-items");
         this.parentNode.appendChild(a);
         let suggestionCount = 0;
-        for (i = 0; i < arr.length && suggestionCount < 3; i++) {
+        for (i = 0; i < arr.length && suggestionCount < 10; i++) {
             if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
                 b = document.createElement("DIV");
                 b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
@@ -23,6 +23,10 @@ export function autocomplete(inp, arr) {
                     closeAllLists();
                 });
                 a.appendChild(b);
+                if (suggestionCount === 0) {
+                    addActive([b]); // Set the first suggestion as active
+                    b.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); // Scroll the first suggestion into view
+                }
                 suggestionCount++;
             }
         }
