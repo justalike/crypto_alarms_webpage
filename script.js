@@ -5,13 +5,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     const pairs = await allPairs();
     var n = 1;
 
-    function getRandomPair() {
-        return pairs[Math.floor(Math.random() * pairs.length)];
-    }
+    // function getRandomPair() {
+    //     return pairs[Math.floor(Math.random() * pairs.length)];
+    // }
 
-    function getRandomPrice() {
-        return Math.floor(Math.random() * 100000);
-    }
+    // function getRandomPrice() {
+    //     return Math.floor(Math.random() * 100000);
+    // }
     // Initialize autocomplete for all inputs with name 'pair'
     const pairInputs = document.querySelectorAll('input[name="pair"]');
     pairInputs.forEach(input => {
@@ -24,19 +24,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         const pairEntry = document.createElement('div');
         pairEntry.className = 'pair-entry';
         pairEntry.innerHTML = `
-           
+              <div class="divider"></div>
             <div class="autocomplete">
                 <div class="input-container">
                  <label class="price-label">${n + 1}</label>
-                    <input type="text" name="pair" placeholder="${getRandomPair()}" required>
-                    <button class="remove-pair-btn" onclick="removePair(this)">Удалить</button>
+                    <input type="text" name="pair" placeholder="Введите пару" required>
+                    <button class="remove-pair-btn" onclick="removePair(this)">-</button>
                 </div>
             </div>
             <div class="input-container">
-                <label class="price-label">Цена, $</label>
-                <input type="number" value="" placeholder="${getRandomPrice()}">
+                <label class="price-label">$</label>
+                <input type="number" value="" placeholder="Укажите цену">
             </div>
-            <div class="divider"></div>
+          
         `;
         n += 1
         pairContainer.appendChild(pairEntry);
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         autocomplete(newInput, pairs);
 
         // Scroll to the new pair entry
-        // pairEntry.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        pairEntry.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
         // // Focus on the new input field
         // newInput.focus();

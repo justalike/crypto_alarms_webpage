@@ -15,9 +15,11 @@
 
 <body>
     <div class="container">
-        <div class="profile-pic"></div>
+        <div class="profile-pic">
+
+        </div>
         <h1>Уведомления</h1>
-        <p>добавьте новые уведомления на желаемую пару и цену / измените существующие</p>
+        <p>добавьте новые уведомления на желаемые пары и цены / измените существующие</p>
         <div id="pair-container">
             <label class="alarms-label">Текущие уведомления:</label>
 
@@ -26,16 +28,16 @@
                 <div class="autocomplete">
                     <div class="input-container">
                         <label class="price-label">1</label>
-                        <input type="text" id="pair" name="pair" placeholder="BTCUSDT" required>
-                        <button class="remove-pair-btn" onclick="removePair(this)">Удалить</button>
+                        <input type="text" id="pair" name="pair" placeholder="Введите пару" required>
+                        <button class="remove-pair-btn" onclick="removePair(this)">-</button>
                     </div>
                 </div>
 
                 <div class="input-container">
-                    <label class="price-label">Цена, $</label>
-                    <input type="number" value="" placeholder="45170">
+                    <label class="price-label">$</label>
+                    <input type="number" value="" placeholder="Укажите цену">
                 </div>
-                <div class="divider"></div>
+
             </div>
         </div>
         <div class="btn-container">

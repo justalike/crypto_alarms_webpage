@@ -26,7 +26,9 @@ body {
 }
 
 .profile-pic {
-    background-color: #6b6b6b;
+    background-image: url('/avatar.jpg');
+    background-size: cover;
+    background-position: center;
     border-radius: 50%;
     width: 100px;
     height: 100px;
@@ -71,7 +73,7 @@ p {
     border-radius: 10px;
     box-sizing: border-box;
     width: calc(100% - 30px);
-    margin-left: 15px;
+    margin-left: 10px;
     margin-bottom: 5px;
     background-color: #0a1621;
     color: #b7b7b7;
@@ -79,7 +81,9 @@ p {
 }
 
 .pair-entry input[type="number"] {
-    width: calc(100% - 90px);
+    width: calc(100%);
+
+
 }
 
 .pair-entry .remove-pair-btn {
@@ -88,11 +92,13 @@ p {
     border: none;
     border-radius: 10px;
     box-sizing: border-box;
-    width: 35%;
+    width: 12.5%;
     margin-left: 15px;
     margin-bottom: 5px;
-    color: #b7b7b7;
+    color: #ffffff;
     font-size: 16px;
+    text-align: center;
+    cursor: pointer;
 }
 
 .pair-entry .input-container {
@@ -122,17 +128,14 @@ p {
 
 .remove-pair-btn:hover {
     background-color: #88283a;
-    /* Slightly lighter color for visual feedback */
     transform: scale(0.95);
     transition-duration: 0.3s;
-    /* Slightly smaller to indicate click */
 }
 
 .remove-pair-btn:active {
     background-color: #901a2f;
-    /* Slightly lighter color for visual feedback */
-    transform: scale(0.90);
-    /* Slightly smaller to indicate click */
+    transform: scale(0.9);
+
 }
 
 .add-pair-btn,
@@ -150,7 +153,8 @@ p {
 .add-pair-btn {
     background-color: #247648;
     color: #ffffff;
-    width: 15%;
+    width: 12.5%;
+
 }
 
 .add-pair-btn:hover {
@@ -211,14 +215,18 @@ p {
     width: 100%;
 }
 
+
 .autocomplete input[type="text"] {
-    width: 100%;
-    padding: 10px;
+    width: calc(100% - 30px);
+    padding: 15px;
     font-size: 16px;
-    border: 1px solid #4a4a4ac6;
-    border-radius: 4px;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 10px;
     background-color: #0a1621;
     color: #b7b7b7;
+    margin-left: 15px;
+    margin-bottom: 5px;
 }
 
 .autocomplete-items {
