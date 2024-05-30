@@ -26,7 +26,7 @@ body {
 }
 
 .profile-pic {
-    background-image: url('/avatar.jpg');
+    background-image: url('./avatar.jpg');
     background-size: cover;
     background-position: center;
     border-radius: 50%;
@@ -48,7 +48,8 @@ p {
 }
 
 #pair-container {
-    flex: 1;
+    flex: 1, auto, auto;
+
     overflow-y: auto;
     /* Allows vertical scrolling */
     padding-right: 10px;
@@ -68,7 +69,7 @@ p {
 
 .pair-entry input[type="text"],
 .pair-entry input[type="number"] {
-    padding: 15px;
+    padding: 10px;
     border: none;
     border-radius: 10px;
     box-sizing: border-box;
@@ -114,7 +115,7 @@ p {
 }
 
 .remove-pair-btn {
-    padding: 10px;
+
     background-color: #912f49;
     border: none;
     border-radius: 10px;
@@ -199,7 +200,8 @@ p {
 .btn-container {
 
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
+
     /* Adjusted spacing */
 }
 
@@ -218,7 +220,7 @@ p {
 
 .autocomplete input[type="text"] {
     width: calc(100% - 30px);
-    padding: 15px;
+    padding: 10px;
     font-size: 16px;
     border: none;
     box-sizing: border-box;
