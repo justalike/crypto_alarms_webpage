@@ -3,7 +3,15 @@ import { autocomplete } from './autocomplete.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const pairs = await allPairs();
+    var n = 1;
 
+    function getRandomPair() {
+        return pairs[Math.floor(Math.random() * pairs.length)];
+    }
+
+    function getRandomPrice() {
+        return Math.floor(Math.random() * 100000);
+    }
     // Initialize autocomplete for all inputs with name 'pair'
     const pairInputs = document.querySelectorAll('input[name="pair"]');
     pairInputs.forEach(input => {
@@ -19,16 +27,18 @@ document.addEventListener('DOMContentLoaded', async () => {
            
             <div class="autocomplete">
                 <div class="input-container">
-                    <input type="text" name="pair" placeholder="BTCUSDT" required>
+                 <label class="price-label">${n + 1}</label>
+                    <input type="text" name="pair" placeholder="${getRandomPair()}" required>
                     <button class="remove-pair-btn" onclick="removePair(this)">Удалить</button>
                 </div>
             </div>
             <div class="input-container">
                 <label class="price-label">Цена, $</label>
-                <input type="number" value="" placeholder="45170">
+                <input type="number" value="" placeholder="${getRandomPrice()}">
             </div>
             <div class="divider"></div>
         `;
+        n += 1
         pairContainer.appendChild(pairEntry);
 
 
@@ -37,10 +47,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         autocomplete(newInput, pairs);
 
         // Scroll to the new pair entry
-        pairEntry.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // pairEntry.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-        // Focus on the new input field
-        newInput.focus();
+        // // Focus on the new input field
+        // newInput.focus();
     };
 
     // Add removePair function to window

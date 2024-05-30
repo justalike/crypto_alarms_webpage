@@ -120,6 +120,21 @@ p {
     font-size: 16px;
 }
 
+.remove-pair-btn:hover {
+    background-color: #88283a;
+    /* Slightly lighter color for visual feedback */
+    transform: scale(0.95);
+    transition-duration: 0.3s;
+    /* Slightly smaller to indicate click */
+}
+
+.remove-pair-btn:active {
+    background-color: #901a2f;
+    /* Slightly lighter color for visual feedback */
+    transform: scale(0.90);
+    /* Slightly smaller to indicate click */
+}
+
 .add-pair-btn,
 .save-changes-btn {
     padding: 10px;
@@ -138,11 +153,44 @@ p {
     width: 15%;
 }
 
+.add-pair-btn:hover {
+    background-color: #256542;
+    /* Slightly lighter color for visual feedback */
+    transform: scale(0.95);
+    transition-duration: 0.3s;
+    /* Slightly smaller to indicate click */
+}
+
+.add-pair-btn:active {
+    background-color: #1b5736;
+    /* Slightly lighter color for visual feedback */
+    transform: scale(0.9);
+    /* Slightly smaller to indicate click */
+}
+
+
 .save-changes-btn {
     background-color: #3c6895;
     color: #ffffff;
     width: 35%;
 }
+
+.save-changes-btn:hover {
+    background-color: #2c5e88;
+    /* Slightly lighter color for visual feedback */
+    transform: scale(0.98);
+    transition-duration: 0.3s;
+    /* Slightly smaller to indicate click */
+}
+
+.save-changes-btn:active {
+    background-color: #1e4464;
+    /* Slightly lighter color for visual feedback */
+    transform: scale(0.9);
+
+    /* Slightly smaller to indicate click */
+}
+
 
 .btn-container {
 
