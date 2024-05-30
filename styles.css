@@ -18,13 +18,14 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     text-align: center;
     width: 320px;
-    height: 90vh;
+    height: 90%;
     /* Adjust as needed */
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
+/* 
 .profile-pic {
     background-image: url('./avatar.jpg');
     background-size: cover;
@@ -33,7 +34,7 @@ body {
     width: 100px;
     height: 100px;
     margin: 0 auto 20px;
-}
+} */
 
 h1 {
     font-size: 25px;
@@ -82,9 +83,8 @@ p {
 }
 
 .pair-entry input[type="number"] {
-    width: calc(100%);
-
-
+    width: 100%;
+    margin-left: 15px;
 }
 
 .pair-entry .remove-pair-btn {

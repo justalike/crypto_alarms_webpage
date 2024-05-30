@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Add removePair function to window
     window.removePair = function (button) {
         const pairContainer = document.getElementById('pair-container');
+        n -= 1
         pairContainer.removeChild(button.closest('.pair-entry'));
     };
 });
