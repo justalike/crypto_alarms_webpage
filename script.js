@@ -95,12 +95,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                 console.log('Вы не выбрали биржу');
                 return;
             }
-            exchanges.push(exchangeInputs[i].value);
+
             if (!pairInputs[i].value || !pairs.includes(pairInputs[i].value.toUpperCase())) {
                 console.log('Вы не выбрали пару или она указана некорректно');
                 return;
             }
-            exchanges.push(pairInputs[i].value?.toLowerCase()
+            exchanges.push(exchangeInputs[i].value?.toLowerCase()
                 .replace('Spot', '')
                 .replace('Futures', '')
                 .replace(' ', ''));
