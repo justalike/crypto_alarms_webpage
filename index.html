@@ -13,6 +13,8 @@
 
 </head>
 
+<!-- Time to move everything to Vercel to get benefits of Unified Data Manager?-->
+
 <body>
     <div class="container">
         <div class="profile-pic">
@@ -22,12 +24,23 @@
         <p>добавьте новые уведомления на желаемые пары и цены / измените существующие</p>
         <div id="pair-container">
             <label class="alarms-label">Текущие уведомления:</label>
-
+            <!-- there we need to call the db to get the alarms and their status -->
             <div class="pair-entry">
                 <div class="divider"></div>
                 <div class="autocomplete">
                     <div class="input-container">
                         <label class="price-label">1</label>
+                        <input type="text" id="exchange" name="exchange" list="exchanges" placeholder="Биржа" required>
+                        <datalist id="exchanges">
+                            <option value="Binance Spot">
+                            <option value="Binance USDM Futures">
+                            <option value="BingX Spot">
+                            <option value="Bitget Spot">
+                            <option value="Bybit Spot"></option>
+                            <option value="OKX Spot">
+
+                        </datalist>
+
                         <input type="text" id="pair" name="pair" placeholder="Введите пару" required>
                         <button class="remove-pair-btn" onclick="removePair(this)">-</button>
                     </div>
@@ -42,6 +55,7 @@
         </div>
         <div class="btn-container">
             <button class="add-pair-btn" onclick="addPair()">+</button>
+            <!-- show the save button only if some alerts texts present -->
             <button class="save-changes-btn" onclick="submitButtonAction()">Сохранить</button>
         </div>
     </div>
