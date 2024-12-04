@@ -7,3 +7,6 @@ export const allPairs = async () => {
     const symbols = pairs.map(pair => pair.symbol);
     return symbols
 }
+
+
+// todo fetch all the pairs from an exchange, not only binance

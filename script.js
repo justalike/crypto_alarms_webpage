@@ -31,7 +31,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="autocomplete">
                 <div class="input-container">
                  <label class="price-label">${n + 1}</label>
-                    <input type="text" id="pair${n + 1}" name="pair" placeholder="Введите пару" required>
+                  <input type="text" id="exchange" name="exchange" list="exchanges" placeholder="Биржа"
+                            required>
+                        <datalist id="exchanges">
+                            <option value="Binance Spot">
+                            <option value="Binance USDM Futures">
+                            <option value="BingX Spot">
+                            <option value="OKX Spot">
+                            <option value="OKX USDM Futures">
+                        </datalist>   
+                 <input type="text" id="pair${n + 1}" name="pair" placeholder="Введите пару" required>
                     <button class="remove-pair-btn" onclick="removePair(this)">-</button>
                 </div>
             </div>
@@ -66,24 +75,35 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
     window.submitButtonAction = () => {
-
+        let exchangeInputs = document.querySelectorAll('input[name="exchange"]');
         let pairInputs = document.querySelectorAll('input[name="pair"]');
         let priceInputs = document.querySelectorAll('input[name="price"]');
 
-
+        let exchanges = [];
         let assets = [];
         let prices = [];
 
         for (let i = 0;
+            i < exchangeInputs.length &&
+            exchangeInputs[i].value !== 0 &&
             i < pairInputs.length &&
             pairInputs[i].value !== 0 &&
             priceInputs[i].value > 0;
             i++) {
 
+            if (!exchangeInputs[i].value) {
+                console.log('Вы не выбрали биржу');
+                return;
+            }
+            exchanges.push(exchangeInputs[i].value);
             if (!pairInputs[i].value || !pairs.includes(pairInputs[i].value.toUpperCase())) {
                 console.log('Вы не выбрали пару или она указана некорректно');
                 return;
             }
+            exchanges.push(pairInputs[i].value?.toLowerCase()
+                .replace('Spot', '')
+                .replace('Futures', '')
+                .replace(' ', ''));
             assets.push(pairInputs[i].value?.toUpperCase());
             prices.push(+priceInputs[i].value);
 
@@ -91,9 +111,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
 
-        if (assets.length > 0 && prices.length > 0) {
+        if (exchanges.length > 0 && assets.length > 0 && prices.length > 0) {
 
             let data = {
+                exchanges: exchanges,
                 pairs: assets,
                 prices: prices,
             }
