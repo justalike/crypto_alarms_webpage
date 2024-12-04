@@ -27,32 +27,29 @@ document.addEventListener('DOMContentLoaded', async () => {
         const pairEntry = document.createElement('div');
         pairEntry.className = 'pair-entry';
         pairEntry.innerHTML = `
-              <div class="divider"></div>
-            <div class="autocomplete">
-                <div class="input-container">
-                 <label class="price-label">${n + 1}</label>
-                  <input type="text" id="exchange" name="exchange" list="exchanges" placeholder="Биржа"
-                            required>
-                        <datalist id="exchanges">
-                            <option value="Binance Spot">
-                            <option value="Binance USDM Futures">
-                            <option value="BingX Spot">
-                            <option value="OKX Spot">
-                            <option value="OKX USDM Futures">
-                        </datalist>   
-                 <input type="text" id="pair${n + 1}" name="pair" placeholder="Введите пару" required>
-                    <button class="remove-pair-btn" onclick="removePair(this)">-</button>
-                </div>
-            </div>
+        <div class="divider"></div>
+        <div class="autocomplete">
             <div class="input-container">
-                <label class="price-label">$</label>
-                <input type="number" id="price${n + 1}" name="price" value="" placeholder="Укажите цену">
+                <label class="price-label">${n + 1}</label>
+                <input type="text" id="exchange${n + 1}" name="exchange" list="exchanges" placeholder="Биржа" required>
+                <datalist id="exchanges">
+                    <option value="Binance Spot">
+                    <option value="Binance USDM Futures">
+                    <option value="BingX Spot">
+                    <option value="OKX Spot">
+                    <option value="OKX USDM Futures">
+                </datalist>   
+                <input type="text" id="pair${n + 1}" name="pair" placeholder="Введите пару" required>
+                <button class="remove-pair-btn" onclick="removePair(this)">-</button>
             </div>
-          
-        `;
-        n += 1
+        </div>
+        <div class="input-container">
+            <label class="price-label">$</label>
+            <input type="number" id="price${n + 1}" name="price" value="" placeholder="Укажите цену">
+        </div>
+    `;
+        n += 1;
         pairContainer.appendChild(pairEntry);
-
 
         // Reinitialize autocomplete for new input
         const newInput = pairEntry.querySelector('input[name="pair"]');
@@ -60,10 +57,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // Scroll to the new pair entry
         pairEntry.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-        // // Focus on the new input field
-        // newInput.focus();
     };
+
+    // // Focus on the new input field
+    // newInput.focus();
+
 
     // Add removePair function to window
     window.removePair = function (button) {
@@ -73,58 +71,53 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
 
 
-
     window.submitButtonAction = () => {
-        let exchangeInputs = document.querySelectorAll('input[name="exchange"]');
-        let pairInputs = document.querySelectorAll('input[name="pair"]');
-        let priceInputs = document.querySelectorAll('input[name="price"]');
+        const pairEntries = document.querySelectorAll('.pair-entry');
 
         let exchanges = [];
         let assets = [];
         let prices = [];
 
-        for (let i = 0;
-            i < exchangeInputs.length &&
-            exchangeInputs[i].value !== 0 &&
-            i < pairInputs.length &&
-            pairInputs[i].value !== 0 &&
-            priceInputs[i].value > 0;
-            i++) {
+        pairEntries.forEach(entry => {
+            const exchangeInput = entry.querySelector('input[name="exchange"]');
+            const pairInput = entry.querySelector('input[name="pair"]');
+            const priceInput = entry.querySelector('input[name="price"]');
 
-            if (!exchangeInputs[i].value) {
+            if (!exchangeInput.value) {
                 console.log('Вы не выбрали биржу');
                 return;
             }
 
-            if (!pairInputs[i].value || !pairs.includes(pairInputs[i].value.toUpperCase())) {
+            if (!pairInput.value || !pairs.includes(pairInput.value.toUpperCase())) {
                 console.log('Вы не выбрали пару или она указана некорректно');
                 return;
             }
-            exchanges.push(exchangeInputs[i].value?.toLowerCase()
+
+            if (!priceInput.value || priceInput.value <= 0) {
+                console.log('Укажите корректную цену');
+                return;
+            }
+
+            exchanges.push(exchangeInput.value.toLowerCase()
                 .replace('Spot', '')
                 .replace('Futures', '')
                 .replace(' ', ''));
-            assets.push(pairInputs[i].value?.toUpperCase());
-            prices.push(+priceInputs[i].value);
-
-
-        }
-
+            assets.push(pairInput.value.toUpperCase());
+            prices.push(+priceInput.value);
+        });
 
         if (exchanges.length > 0 && assets.length > 0 && prices.length > 0) {
-
-            let data = {
-                exchanges: exchanges,
+            const data = {
+                exchanges,
                 pairs: assets,
-                prices: prices,
-            }
-            telegram.sendData(JSON.stringify(data))
-
-            telegram.close()
+                prices,
+            };
+            telegram.sendData(JSON.stringify(data));
+            telegram.close();
         } else {
-            alert("Заполните все поля")
+            alert("Заполните все поля");
         }
+    };
 
 
-    }
-});
+})
