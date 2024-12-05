@@ -221,6 +221,7 @@ const submitButtonAction = () => {
 
     if (exchanges.length && pairs.length && prices.length) {
         const data = { exchanges, pairs, prices };
+        console.log(data)
         telegram.sendData(JSON.stringify(data));
         telegram.close();
     } else {
